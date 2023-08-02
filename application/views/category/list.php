@@ -1,7 +1,7 @@
 <div class="container">
 <div class="card">
   <div class="card-header">
-    List Brand
+    List Category
   </div>
   <?php
   if($this->session->flashdata('success')){
@@ -14,8 +14,8 @@
     <?php
   }
    ?>  
-  <div class  ="card-body">
-  <a href="<?php echo base_url('brand/create')?>" class="btn btn-primary">Add Brand</a>
+  <div class="card-body">
+  <a href="<?php echo base_url('category/create')?>" class="btn btn-primary">Add Category</a>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -30,19 +30,19 @@
     </thead>
     <tbody>
       <?php
-      foreach($brand  as $key => $bra){
+      foreach($category  as $key => $cate){
       ?>
       <tr>
         <th scope="row"><?php echo $key ?></th>
-        <td><?php echo $bra->title ?></td>
-        <td><?php echo $bra->slug ?></td>
-        <td><?php echo $bra->description ?></td>
+        <td><?php echo $cate->title ?></td>
+        <td><?php echo $cate->slug ?></td>
+        <td><?php echo $cate->description ?></td>
         <td>
-          <img src="<?php echo base_url('uploads/brand/' .$bra->image) ?>" width="150" height="150">
+          <img src="<?php echo base_url('uploads/category/' .$cate->image) ?>" width="150" height="150">
         </td>
         <td>
           <?php
-          if($bra->status==1){
+          if($cate->status==1){
             echo 'Active';
           }else{
             echo'Inactive';
@@ -50,8 +50,8 @@
           ?>
         </td>
         <td>
-          <a onclick="return confirm('Are you sure?')" href="<?php echo base_url('brand/delete/'.$bra->id)?>" class="btn btn-danger">Delete</a>
-          <a class= "btn btn-warning" href="<?php echo base_url('brand/edit/'.$bra->id)?>">Edit</a>
+          <a onclick="return confirm('Are you sure?')" href="<?php echo base_url('category/delete/'.$cate->id)?>" class="btn btn-danger">Delete</a>
+          <a class= "btn btn-warning" href="<?php echo base_url('category/edit/'.$cate->id)?>">Edit</a>
         </td>
       </tr>
       <?php

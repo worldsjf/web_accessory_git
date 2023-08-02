@@ -9,7 +9,6 @@
     ?>
     <div class="alert alert-danger"><?php echo $this->session->flashdata('error') ?></div>
     <?php
-  
   }
    ?>
 <form action="<?php echo base_url('login-user')?>" method="POST"> 
