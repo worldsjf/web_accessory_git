@@ -7,27 +7,26 @@ class ProductModel extends CI_Model {
     }
 
     public function selectAllproduct() {
-        $query = $this->db->select('categories.title as tendanhmc,products.*,brands.title as tenthuonghieu')
+        $query = $this->db->select('categories.title as tendanhmuc,products.*,brands.title as tenthuonghieu')
         ->from('categories')
         ->join('products','products.category_id=categories.id')
         ->join('brands','brands.id=products.brand_id')
         ->get();
         return $query->result();
     }
-/*
-    public function selectCategoryById($id) {
-        $query = $this->db->where('id', $id)->get('categories');
-        return $query->row();
+    public function selectProductById($id){
+       $query = $this->db->get_where('products', ['id'=>$id]);
+       return $query->row();
     }
-
     
-    public function updateCategory($id, $data) {
-        return $this->db->update('categories', $data, ['id' => $id]);
+    public function updateProduct($id, $data) {
+        return $this->db->update('products', $data, ['id' => $id]);
     }
 
-
-    public function deleteCategory($id) {
-        return $this->db->delete('categories', ['id' => $id]);
-    }*/
+    public function deleteProduct($id) {
+        return $this->db->delete('products', ['id' => $id]);
+    }
+    
+    
 }
 ?>

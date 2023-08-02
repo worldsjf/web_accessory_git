@@ -21,7 +21,7 @@
         <form action="<?php echo base_url('product/store')?>" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="text" name="quantity"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="title"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <?php echo '<span class="text text-danger">' .form_error('title'). '</span>' ?>
           </div>
           <div class="form-group">

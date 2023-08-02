@@ -56,13 +56,13 @@ class CategoryController extends CI_Controller {
                         $this->load->view('category/create', $error);
                         $this->load->view('admin_template/footer');
                } else {
-                $category_filename = $this->upload->data('file_name');
+                $cate_filename = $this->upload->data('file_name');
                 $data = [
                     'title' => $this->input->post('title'),
                     'description' => $this->input->post('description'),
                     'slug' => $this->input->post('slug'),
                     'status' => $this->input->post('status'),
-                    'image' =>$category_filename
+                    'image' =>$cate_filename
                 ];
                 $this->load->model('CategoryModel');
                 $this->CategoryModel->insertCategory($data);
