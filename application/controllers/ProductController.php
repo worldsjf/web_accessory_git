@@ -40,6 +40,7 @@ class ProductController extends CI_Controller {
 
     public function store(){
         $this->form_validation->set_rules('title', 'Title', 'trim|required', ['required' => 'You must provide a %s']);
+        $this->form_validation->set_rules('price', 'Price', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('slug', 'Slug', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('quantity', 'Quantity', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('description', 'Description', 'trim|required', ['required' => 'You must provide a %s']);
@@ -52,11 +53,11 @@ class ProductController extends CI_Controller {
                $config = [ 
                    'upload_path' => './uploads/product',
                    'allowed_types' => 'gif|jpg|png|jpeg',
-                   'file_name' => $new_name,
+                   'file_name' => $new_name
                ];
                
                $this->load->library('upload', $config);
-               if ( ! $this->upload->do_upload('image'))
+               if (!$this->upload->do_upload('image'))
                {
                         $error = array('error' => $this->upload->display_errors()); // Change display_error() to display_errors()
                         $this->load->view('admin_template/header');
@@ -67,7 +68,9 @@ class ProductController extends CI_Controller {
                 $filename = $this->upload->data('file_name');
                 $data = [
                     'title' => $this->input->post('title'),
+                    'price' => $this->input->post('price'),
                     'description' => $this->input->post('description'),
+                    
                     'slug' => $this->input->post('slug'),
                     'quantity' => $this->input->post('quantity'),
                     'category_id' => $this->input->post('category_id'),
@@ -105,6 +108,7 @@ class ProductController extends CI_Controller {
     }
     public function update($id){
         $this->form_validation->set_rules('title', 'Title', 'trim|required', ['required' => 'You must provide a %s']);
+        $this->form_validation->set_rules('price', 'Price', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('slug', 'Slug', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('quantity', 'Quantity', 'trim|required', ['required' => 'You must provide a %s']);
         $this->form_validation->set_rules('description', 'Description', 'trim|required', ['required' => 'You must provide a %s']);
@@ -119,7 +123,7 @@ class ProductController extends CI_Controller {
                $config = [ 
                    'upload_path' => './uploads/product',
                    'allowed_types' => 'gif|jpg|png|jpeg',
-                   'file_name' => $new_name,
+                   'file_name' => $new_name
                ];
                
                $this->load->library('upload', $config);
@@ -137,17 +141,19 @@ class ProductController extends CI_Controller {
                     'description' => $this->input->post('description'),
                     'slug' => $this->input->post('slug'),
                     'quantity' => $this->input->post('quantity'),
+                    'price' => $this->input->post('price'),
                     'category_id' => $this->input->post('category_id'),
                     'brand_id' => $this->input->post('brand_id'),
                     'status' => $this->input->post('status'),
-                    'image' =>$filename
+                    'image' =>$filename,
                 ];
                
-            }
-        }else{
+                }
+            }else{
             $data = [
-                'title' => $this->input->post('title'),
+                    'title' => $this->input->post('title'),
                     'description' => $this->input->post('description'),
+                    'price' => $this->input->post('price'),
                     'slug' => $this->input->post('slug'),
                     'quantity' => $this->input->post('quantity'),
                     'category_id' => $this->input->post('category_id'),

@@ -21,6 +21,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
+        <th scope="col">Price</th>
         <th scope="col">Quantity</th>
         <th scope="col">Category</th>
         <th scope="col">Brand</th>
@@ -38,6 +39,7 @@
       <tr>
         <th scope="row"><?php echo $key ?></th>
         <td><?php echo $pro->title ?></td>
+        <td><?php echo $pro->price ?>VND</td>        
         <td><?php echo $pro->quantity ?></td>
         <td><?php echo $pro->tendanhmuc ?></td>
         <td><?php echo $pro->tenthuonghieu ?></td>
