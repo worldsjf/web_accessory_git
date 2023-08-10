@@ -7,7 +7,7 @@
    <?php
   }else{
     ?>
-    <div class="alert alert-danger"><?php echo $this->session->flashdata('error') ?></div>
+    <div ><?php echo $this->session->flashdata('error') ?></div>
     <?php
   }
    ?>
@@ -24,5 +24,6 @@
     <?php echo form_error('password'); ?>
 </div>
   <button type="submit" class="btn btn-primary">Login</button>
+  <a href="<?php echo base_url('register-admin')?>" class="btn btn-success">Sign Up Admin</a>
 </form>
 </div>
