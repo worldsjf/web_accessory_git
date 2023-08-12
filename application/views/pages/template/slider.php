@@ -9,12 +9,7 @@
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
-						<!-- <style>
-							img.girl.img-responsive {
-							height: 420px;
-							width: 900px;
-							}
-						</style> -->
+						
 						<div class="carousel-inner">
 							<?php 
 							foreach ($sliders as $key => $slider){

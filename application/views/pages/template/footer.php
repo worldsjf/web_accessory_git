@@ -19,7 +19,7 @@
 										<i class="fa fa-play-circle-o"></i>
 									</div>
 								</a>
-								<p>Circle of Hands</p>
+								<p>NZXT</p>
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 										<i class="fa fa-play-circle-o"></i>
 									</div>
 								</a>
-								<p>Circle of Hands</p>
+								<p>ASUS</p>
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
@@ -49,7 +49,7 @@
 										<i class="fa fa-play-circle-o"></i>
 									</div>
 								</a>
-								<p>Circle of Hands</p>
+								<p>CORSAIR</p>
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 										<i class="fa fa-play-circle-o"></i>
 									</div>
 								</a>
-								<p>Circle of Hands</p>
+								<p>GIGABYTE</p>
 								<h2>24 DEC 2014</h2>
 							</div>
 						</div>
@@ -148,7 +148,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 Accessory Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2023 Accessory Inc. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>
@@ -156,7 +156,7 @@
 		
 	</footer><!--/Footer-->
 	
-
+	
   
     <script src="<?php echo base_url('frontend/js/jquery.js') ?>"></script>
 	<script src="<?php echo base_url('frontend/js/bootstrap.min.js') ?>"></script>
@@ -164,5 +164,30 @@
 	<script src="<?php echo base_url('frontend/js/price-range.js') ?>"></script>
     <script src="<?php echo base_url('frontend/js/jquery.prettyPhoto.js') ?>"></script>
     <script src="<?php echo base_url('frontend/js/main.js') ?>"></script>
+	<script>
+    $('.write-comment').click(function() {
+        var name_comment = $('.name_comment').val();
+        var email_comment = $('.email_comment').val();
+        var comment = $('.comment').val();
+		var pro_id = $('.product_id_comment').val();
+
+        if (name_comment === '' || email_comment === '' || comment === '') {
+            alert('Vui lòng điền đầy đủ thông tin.');
+        } else {
+            $.ajax({
+                method: 'POST',
+                url: '/comment/send',
+                data: { name_comment: name_comment, email_comment: email_comment, comment: comment ,pro_id:pro_id},
+                success: function(response) {
+                    alert('Cảm ơn bạn đã đánh giá sản phẩm.');
+                },
+                error: function(xhr, status, error) {
+                    alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                }
+            });
+        }
+    });
+</script>
+
 </body>
 </html>

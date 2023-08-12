@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </ul>
                                 </li> 
 								
-								<li><a href="application/views/pages/contact-us.html">CONTACT</a></li>
+								<li><a href="<?php echo base_url('contact') ?>">CONTACT</a></li>
 							</ul>
 						</div>
 					</div>

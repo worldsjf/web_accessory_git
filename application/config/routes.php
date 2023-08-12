@@ -20,7 +20,13 @@ $route['confirm-checkout']['POST'] = 'IndexController/confirm_checkout';
 $route['dang-xuat']['GET'] = 'IndexController/dang_xuat';
 $route['thanks']['GET'] = 'IndexController/thanks';
 $route['tim-kiem']['GET'] = 'IndexController/tim_kiem';
+//contact
+$route['contact']['GET'] = 'IndexController/contact';
+$route['thanks-contact']['POST'] = 'IndexController/thanks_contact';
+//comment
+$route['comment/send']['POST'] = 'IndexController/comment_send';
 //pagination
+$route['phan-trang'] = 'IndexController/index/1';
 $route['phan-trang/(:num)'] = 'IndexController/index/$1';
 $route['phan-trang/index/(:num)'] = 'IndexController/index/$1';
 $route['danh-muc/(:any)/(:any)/(:any)']['GET'] = 'IndexController/category/$1/$2/$3';
@@ -67,6 +73,6 @@ $route['product/store']['POST'] = 'ProductController/store';
 
 //order
 $route['order/list']['GET'] = 'OrderController/index';
-$route['order/process']['POST'] = 'OrderController/index';
+$route['order/process']['POST'] = 'OrderController/process';
 $route['order/view/(:any)']['GET'] = 'OrderController/view/$1';
 $route['order/delete/(:any)']['GET'] = 'OrderController/delete_order/$1';

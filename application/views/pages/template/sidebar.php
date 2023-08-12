@@ -41,9 +41,9 @@
 							</div>
 						</div> -->
 						
-						<div class="shipping text-center"><!--shipping-->
+						<!-- <div class="shipping text-center">
 							<img src="images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-					
+						</div>
+					 -->
 					</div>
 				</div>

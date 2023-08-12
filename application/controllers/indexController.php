@@ -18,7 +18,7 @@ class IndexController extends CI_Controller {
 		$config = array();
 		$config["base_url"] = base_url() .'/phan-trang'; 
 		$config['total_rows'] = ceil($this->IndexModel->countAllProduct()); //đếm tất cả sản phẩm //8 //hàm ceil làm tròn phân trang 
-		$config["per_page"] = 3; //từng trang 3 sản phẩn
+		$config["per_page"] = 4; //từng trang 3 sản phẩn
 		$config["uri_segment"] = 2; //lấy số trang hiện tại
 		$config['use_page_numbers'] = TRUE; //trang có số
 		$config['full_tag_open'] = '<ul class="pagination">';
@@ -44,9 +44,20 @@ class IndexController extends CI_Controller {
 		$this->data['allproduct_pagination'] = $this->IndexModel->getIndexPagination($config["per_page"], $this->page);
 		//pagination
 		//$this->data['allproduct'] = $this->IndexModel->getAllProduct();
+		$this->data['items_categories'] = $this->IndexModel->ItemsCategories();
 		$this->load->view('pages/template/header', $this->data);
 		$this->load->view('pages/template/slider');
 		$this->load->view('pages/home', $this->data);
+		$this->load->view('pages/template/footer');
+	}
+	public function contact(){
+		$this->load->view('pages/template/header', $this->data);
+		$this->load->view('pages/contact');
+		$this->load->view('pages/template/footer');
+	}
+	public function thanks_contact(){
+		$this->load->view('pages/template/header', $this->data);
+		$this->load->view('pages/  ');
 		$this->load->view('pages/template/footer');
 	}
 	public function category($id)
@@ -132,6 +143,11 @@ class IndexController extends CI_Controller {
 	public function product($id)
 	{
 		$this->data['product_details'] = $this->IndexModel->getProductDetails($id);
+		$this->data['list_comments'] = $this->IndexModel->getListComments($id);
+		foreach($this->data['product_details'] as $key =>$val){
+			$category_id=$val->category_id;
+		}
+		$this->data['product_related'] = $this->IndexModel->getProductRelated($id,$category_id);
 		$this->data['title'] = $this->IndexModel->getProductTitle($id);
 		$this->config->config["pageTitle"] = $this->data['title'];
 		$this->load->view('pages/template/header', $this->data);
@@ -382,4 +398,17 @@ class IndexController extends CI_Controller {
 		$this->load->view('pages/timkiem', $this->data);
 		$this->load->view('pages/template/footer');
 	}
+	public function comment_send(){
+		$data = [
+			'name' => $this->input->post('name_comment'),
+			'product_id' => $this->input->post('pro_id'),
+			'email' => $this->input->post('email_comment'),
+			'comment' => $this->input->post('comment'),
+			'status' => 1
+		];
+   
+		var_dump($data);
+   
+		$result = $this->IndexModel->insertComment($data);
+   }
 }
